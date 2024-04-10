@@ -26,13 +26,17 @@ function switchCurrPlayer() {
 /** Creates the gameboard given the HEIGHT and WIDTH variables.
  * Fills each subarray value with null
  * Example: gameState.board[0] === [null, null, null, null, null, null, null]  */
+
 function makeBoard() {
-  // TODO: set "board" to empty HEIGHT x WIDTH matrix array
-  const initialBoard = gameState.board.fill(Array(WIDTH));
 
+  for (let i = 0; i < HEIGHT; i++) { //FIXME: change i to y/x to match the ui.js
+    const gridRow = Array(WIDTH); //FIXME: use the .fill here with null to avoid having to do the map
+    gameState.board[i] = gridRow;
+
+  }
   //loop through board, for ea element, fill the subarrays with null
-  initialBoard.map(val => val.fill(null));
-
+  gameState.board.map(val => val.fill(null)); //FIXME: remove this after fixing gridRow
+  console.log("gameState.board", gameState.board);
 }
 
 

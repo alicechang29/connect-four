@@ -18,6 +18,9 @@ function makeHtmlBoard() {
   const $top = document.createElement("tr");
   $top.setAttribute("id", "column-top");
 
+  //FIXME: when doing internal comments, use // and not docstrings
+  //rename table-data in the comment as "cell"
+
   /**Creating the area that users can click to place a piece
    * by dynamically creating a table-data element and setting the id to top-(x value)
    * adding an event listener to each table-data element and appending it to the table row  */
