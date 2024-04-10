@@ -10,7 +10,7 @@ const HEIGHT = 6;
 
 const gameState = {
   currPlayer: 1, // active player: 1 or 2
-  board: Array(HEIGHT), // array of HEIGHT number of slots
+  board: Array(HEIGHT), // array of HEIGHT number of slots [emptyx6]
   // Each array slot is empty to start, but will be filled in with an array
   // of WIDTH later.
   // These inner arrays will represent rows.
@@ -23,8 +23,16 @@ function switchCurrPlayer() {
 }
 
 
+/** Creates the gameboard given the HEIGHT and WIDTH variables.
+ * Fills each subarray value with null
+ * Example: gameState.board[0] === [null, null, null, null, null, null, null]  */
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  const initialBoard = gameState.board.fill(Array(WIDTH));
+
+  //loop through board, for ea element, fill the subarrays with null
+  initialBoard.map(val => val.fill(null));
+
 }
 
 
