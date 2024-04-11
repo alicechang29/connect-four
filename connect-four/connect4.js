@@ -29,13 +29,11 @@ function switchCurrPlayer() {
 
 function makeBoard() {
 
-  for (let i = 0; i < HEIGHT; i++) { //FIXME: change i to y/x to match the ui.js
-    const gridRow = Array(WIDTH); //FIXME: use the .fill here with null to avoid having to do the map
-    gameState.board[i] = gridRow;
+  for (let y = 0; y < HEIGHT; y++) { 
+    const gridRow = Array(WIDTH).fill(null);
+    gameState.board[y] = gridRow;
 
   }
-  //loop through board, for ea element, fill the subarrays with null
-  gameState.board.map(val => val.fill(null)); //FIXME: remove this after fixing gridRow
   console.log("gameState.board", gameState.board);
 }
 
@@ -45,8 +43,12 @@ function makeBoard() {
  */
 
 function findSpotInCol(x) {
-  // TODO: write the real version of this, rather than always returning 5
-  return 5;
+  //x represents the column, return the lowest null y value
+  const yIndex = gameState.board[x].findLastIndex(y => y === null);
+  if(yIndex === -1){
+    return null;
+  }
+  return yIndex;
 }
 
 
