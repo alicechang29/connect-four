@@ -44,11 +44,10 @@ function makeBoard() {
 
 function findSpotInCol(x) {
   //x represents the column, return the lowest null y value
-  const yIndex = gameState.board[x].findLastIndex(y => y === null);
-  if(yIndex === -1){
-    return null;
+  for(let y = HEIGHT - 1; y>= 0; y--){
+    if(gameState.board[y][x] === null) return y;
   }
-  return yIndex;
+  return null;
 }
 
 
@@ -65,7 +64,12 @@ function checkForWin() {
 
     // TODO: Check four cells to see if they're all legal & all color of current
     // player
-
+    for(let i = 0; i < cells.length; i++){
+      if((cells[i][0] < HEIGHT && cells[i][1] < WIDTH) && 
+      gameState.board[y][x] === gameState.currPlayer) return true;
+    }
+    
+    return false;
   }
 
   // using HEIGHT and WIDTH, generate "check list" of coordinates
@@ -77,6 +81,9 @@ function checkForWin() {
       // horizontal has been assigned for you
       // each should be an array of 4 cell coordinates:
       // [ [y, x], [y, x], [y, x], [y, x] ]
+      
+      //wins: all ys same, xs next to each other. all xs same, ys next to each other
+    //win diag: x and y both increase by 1
 
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
       let vert;
