@@ -64,8 +64,8 @@ function checkForWin() {
 
     // TODO: Check four cells to see if they're all legal & all color of current
     // player
-    for(let i = 0; i < cells.length; i++){
-      if((cells[i][0] < HEIGHT && cells[i][1] < WIDTH) && 
+    for(let y = 0; y < cells.length; y++){
+      if((cells[y][0] < HEIGHT && cells[y][1] < WIDTH) && 
       gameState.board[y][x] === gameState.currPlayer) return true;
     }
     
